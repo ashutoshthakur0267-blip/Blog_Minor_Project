@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title>Edit Blog</title>
+</head>
+<body>
+  <%- include('./partials/nav') %>
+
+  <div class="container mt-4">
+    <h2>Edit Blog</h2>
+
+    <form action="/blog/edit/<%= blog._id %>" method="POST" enctype="multipart/form-data">
+      
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          value="<%= blog.title %>"
+          required
+        >
+      </div>
+
+      <!-- Body -->
+      <div class="mb-3">
+        <label for="body" class="form-label">Body</label>
+        <textarea
+          name="body"
+          class="form-control"
+          id="body"
+          rows="6"
+          required
+        ><%= blog.body %></textarea>
+      </div>
+
+      <!-- ⭐ Category -->
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select name="category" class="form-control" required>
+          <option <%= blog.category === "Technology" ? "selected" : "" %>>Technology</option>
+          <option <%= blog.category === "Lifestyle" ? "selected" : "" %>>Lifestyle</option>
+          <option <%= blog.category === "Travel" ? "selected" : "" %>>Travel</option>
+          <option <%= blog.category === "Education" ? "selected" : "" %>>Education</option>
+          <option <%= blog.category === "Sports" ? "selected" : "" %>>Sports</option>
+          <option <%= blog.category === "Food" ? "selected" : "" %>>Food</option>
+          <option <%= blog.category === "Finance" ? "selected" : "" %>>Finance</option>
+          <option <%= blog.category === "Other" ? "selected" : "" %>>Other</option>
+        </select>
+      </div>
+
+      <!-- Cover Image -->
+      <div class="mb-3">
+        <label for="coverImage" class="form-label">Update Cover Image (optional)</label>
+        <input type="file" class="form-control" name="coverImage" id="coverImage">
+      </div>
+
+      <!-- Buttons -->
+      <button type="submit" class="btn btn-success">Save Changes</button>
+      <a href="/blog/<%= blog._id %>" class="btn btn-secondary">Cancel</a>
+      
+    </form>
+  </div>
+
+  <%- include('./partials/scripts') %>
+</body>
+</html>

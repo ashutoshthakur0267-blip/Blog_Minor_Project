@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("./partials/head") %>
+  <title>🔥 Trending Blogs</title>
+
+  <style>
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include("./partials/nav") %>
+
+  <div class="container mt-4">
+    <h2 class="mb-4">🔥 Trending Blogs</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% trending.forEach(blog => { %>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="<%= blog.coverImageURL %>" 
+                 class="card-img-top">
+
+            <div class="card-body">
+              <h5><%= blog.title %></h5>
+
+              <small class="text-muted">
+                ❤️ <%= blog.likes.length %> Likes 
+                <% if (blog.commentCount) { %>
+                  • 💬 <%= blog.commentCount %> Comments
+                <% } %>
+              </small><br>
+
+              <% if (blog.createdBy) { %>
+                <small>By <%= blog.createdBy.fullname %></small><br>
+              <% } %>
+
+              <a href="/blog/<%= blog._id %>" 
+                 class="btn btn-primary btn-sm mt-2">
+                 Read
+              </a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+  </div>
+
+  <%- include("./partials/scripts") %>
+</body>
+</html>

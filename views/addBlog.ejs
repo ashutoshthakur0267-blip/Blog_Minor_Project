@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/head') %>
+    <title>Add New Blog</title>
+
+    <style>
+      /* ======== General Page Styling ======== */
+      body {
+        background-color: #f8f9fa;
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* ======== Main Form Container ======== */
+      .add-blog-container {
+        max-width: 700px;
+        margin: 80px auto;
+        background: #ffffff;
+        padding: 40px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .add-blog-container h2 {
+        text-align: center;
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 25px;
+      }
+
+      /* ======== Form Styling ======== */
+      .form-label {
+        font-weight: 500;
+        color: #444;
+      }
+
+      .form-control {
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #ced4da;
+        transition: border-color 0.2s ease-in-out;
+      }
+
+      .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+      }
+
+      textarea.form-control {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      /* ======== Button Styling ======== */
+      .btn-primary {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+      }
+
+      /* ======== Responsive ======== */
+      @media (max-width: 576px) {
+        .add-blog-container {
+          margin: 50px 20px;
+          padding: 30px 20px;
+        }
+      }
+    </style>
+</head>
+
+<body>
+  <%- include('./partials/nav') %>
+
+    <div class="add-blog-container">
+      <h2>Add a New Blog</h2>
+      <form action="/blog" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="coverImage" class="form-label">Cover Image</label>
+          <input type="file" class="form-control" id="coverImage" name="coverImage" aria-describedby="coverImage"
+            required>
+        </div>
+
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title" aria-describedby="title" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="body" class="form-label">Body</label>
+          <textarea name="body" class="form-control" id="body" rows="6" required></textarea>
+        </div>
+
+        <div class="mb-3">
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select name="category" class="form-control" required>
+              <option>Technology</option>
+              <option>Lifestyle</option>
+              <option>Travel</option>
+              <option>Education</option>
+              <option>Sports</option>
+              <option>Food</option>
+              <option>Finance</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Submit Blog</button>
+        </div>
+      </form>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+
+</html>

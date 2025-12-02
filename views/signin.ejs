@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+    <title>Signin</title>
+
+    <style>
+        /* ======== General Page Styling ======== */
+        body {
+            background-color: #f8f9fa;
+            font-family: "Poppins", sans-serif;
+        }
+
+        /* ======== Centered Form Card ======== */
+        .signin-container {
+            max-width: 450px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .signin-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* ======== Form Elements ======== */
+        .form-label {
+            font-weight: 500;
+            color: #444;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            box-shadow: none;
+            border: 1px solid #ced4da;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+        }
+
+        /* ======== Button Styling ======== */
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* ======== Email Help Text ======== */
+        #emailHelp {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        /* ======== Responsive ======== */
+        @media (max-width: 576px) {
+            .signin-container {
+                margin: 50px 20px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+
+    <div class="signin-container">
+        <h2>Sign In</h2>
+        <form action="/user/signin" method="post">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input 
+                    type="email" 
+                    name="email"
+                    class="form-control" 
+                    id="exampleInputEmail1" 
+                    aria-describedby="emailHelp"
+                    required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input 
+                    name="password" 
+                    type="password" 
+                    class="form-control" 
+                    id="exampleInputPassword1"
+                    required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+
+</html>

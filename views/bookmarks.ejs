@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("./partials/head") %>
+  <title>My Bookmarks | Blogify</title>
+</head>
+
+<body>
+  <%- include("./partials/nav") %>
+
+  <div class="container mt-4">
+    <h2 class="mb-4">⭐ My Bookmarked Blogs</h2>
+
+    <div class="row">
+      <% if (blogs.length === 0) { %>
+        <p>You haven't bookmarked any blogs yet.</p>
+      <% } %>
+
+      <% blogs.forEach(blog => { %>
+        <div class="col-md-4 mt-3">
+          <div class="card">
+            <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="Cover">
+
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.title %></h5>
+              <p class="text-muted">By <%= blog.createdBy.fullname %></p>
+              <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <%- include("./partials/scripts") %>
+</body>
+</html>
