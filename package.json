@@ -1,14 +1,22 @@
 {
   "name": "youtube-blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "Blogify - Node.js + Express + MongoDB + EJS project",
   "main": "index.js",
+  "type": "commonjs",
+
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
+
+  "engines": {
+    "node": "18.x"
+  },
+
   "author": "",
   "license": "ISC",
+
   "dependencies": {
     "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
@@ -17,6 +25,7 @@
     "mongoose": "^8.19.2",
     "multer": "^2.0.2"
   },
+
   "devDependencies": {
     "nodemon": "^3.1.10"
   }
